@@ -19,6 +19,7 @@ macro(run_conan)
             gtest/1.10.0
             OPTIONS
             ${CONAN_EXTRA_OPTIONS}
+            gtest:build_gmock=False
             BASIC_SETUP
             CMAKE_TARGETS # individual targets to link to
             BUILD
