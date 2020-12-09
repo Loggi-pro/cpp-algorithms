@@ -1,0 +1,21 @@
+image:
+  - Visual Studio 2019
+environment:
+  compiler: mingw
+  matrix:
+    - target: gcc-8.1
+      cxx_path: C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin
+
+clone_folder: c:\projects\source
+install:
+  - set PATH=%cxx_path%;%PATH%;C:\Users\appveyor\AppData\Roaming\Python\Scripts;
+build_script:
+  - mkdir build
+  - cd build
+  - pip install --user conan
+  - cmake c:\projects\source -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE:STRING=Release
+  - cmake --build . --config "Release"
+
+test_script:
+    - cmd: ctest -C Debug
+
