@@ -141,7 +141,7 @@ public:
 		for (unsigned int index = 0; index < _digits.size(); index++, base *= BASE) {
 			unsigned int old_sum = sum;
 			sum += static_cast<value_type>(_digits[_digits.size() - 1 - index]) * (base);
-			if (sum < old_sum) { return std::optional<unsigned int>{}; };
+			if (sum < old_sum) { return std::nullopt; }
 		}
 		return std::optional<unsigned int>{ sum };
 	}

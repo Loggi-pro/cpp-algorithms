@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <utility>
 #include <vector>
 template<typename T1, typename T2>

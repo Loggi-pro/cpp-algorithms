@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-#define OFFSETOF(s, m) (size_t) & (((s *)0)->m)
+#define OFFSETOF(s, m) (std::size_t) & (((s *)0)->m)
 template<class T, class Allocator>
 struct ListNode {
 	using PListNode = typename Allocator::template SmartPointer<ListNode>;
@@ -117,7 +117,7 @@ public:
 template<typename T>
 class List {
 private:
-	size_t _length = 0;
+	std::size_t _length = 0;
 	struct ListNode {
 		using PListNode = typename ListAllocatorRAM<ListNode>::template SmartPointer<ListNode>;
 		PListNode prev;
@@ -137,7 +137,7 @@ public:
 		explicit iterator(PListNode node) : _item(node) {}
 
 	public:
-		iterator(const iterator &other) : _item(other._item) {}
+		iterator(const iterator &other) = default;
 		iterator &operator++() {
 			_item = (*_item).next;
 			return *this;
@@ -207,7 +207,7 @@ public:
 		--_length;
 	}
 
-	size_t size() const {
+	std::size_t size() const {
 		return _length;
 	}
 
@@ -220,7 +220,7 @@ public:
 	iterator end() {
 		return iterator(node);
 	}
-	List<T> &operator=(const List<T> &x) {}
+
 	T &			 back() {
 		iterator tmp = end();
 		return *(--tmp);
