@@ -1,6 +1,5 @@
 #include "types/big_int.h"
 #include <gtest/gtest.h>
-#include <limits.h>
 
 
 TEST(BigIntTest, BigInt_SummSmallNumbers) {
