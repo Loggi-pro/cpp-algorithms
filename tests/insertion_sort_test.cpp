@@ -1,4 +1,4 @@
-#include "sort/insertion_sort.h"
+#include "algorithms/insertion_sort.h"
 #include <gtest/gtest.h>
 #include <utils.h>
 
