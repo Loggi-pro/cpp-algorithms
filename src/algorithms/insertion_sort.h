@@ -7,7 +7,7 @@ void _unguarded_linear_insert(RandomAccessIterator last, T value) {
 	--next;
 	while (value < *next) {
 		*last = *next;
-		last	= next--;
+		last = next--;
 	}
 	*last = value;
 }

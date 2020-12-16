@@ -10,9 +10,9 @@
 #include <vector>
 class TextEditor {
 	enum Command { None, Insert, Delete, Line, Done, Last, Print, Change };
-	List<std::string>						_text;
+	List<std::string> _text;
 	List<std::string>::iterator _current{ _text.begin() };
-	Command											_cmd{ None };
+	Command _cmd{ None };
 
 	int _currentLineNumber{ -1 };
 	struct Argument {
@@ -31,9 +31,9 @@ class TextEditor {
 			int from;
 			int to;
 		};
-		PrintArg	printArg{};
+		PrintArg printArg{};
 		ChangeArg changeArg;
-		LineArg		lineArg{};
+		LineArg lineArg{};
 		DeleteArg delArg{};
 
 		Argument() = default;
@@ -45,10 +45,10 @@ class TextEditor {
 	};
 
 	std::tuple<bool, Command, Argument> _isCorrectCommand(const std::string &line) {
-		std::istringstream								 buf(line);
+		std::istringstream buf(line);
 		std::istream_iterator<std::string> beg(buf);
 		std::istream_iterator<std::string> end;
-		std::vector<std::string>					 tokens(beg, end);
+		std::vector<std::string> tokens(beg, end);
 
 		if (tokens.empty()) { return std::make_tuple<bool, Command, Argument>(false, None, Argument()); }
 
@@ -104,7 +104,7 @@ class TextEditor {
 
 		if (_currentLineNumber >= from && _currentLineNumber <= to) {
 			_currentLineNumber = from - 1;
-			_current					 = --it;
+			_current = --it;
 		} else if (_currentLineNumber > to) {
 			_currentLineNumber -= to + 1 - from;// current неизменно
 		}
@@ -174,7 +174,7 @@ class TextEditor {
 		}
 
 		_currentLineNumber = n;
-		_cmd							 = Line;
+		_cmd = Line;
 	}
 	std::unique_ptr<List<std::string>> _commandDone() {
 
@@ -196,8 +196,8 @@ class TextEditor {
 
 		if (from > to) { throw std::runtime_error("First index bigger than second"); }
 
-		auto												res = std::make_unique<List<std::string>>();
-		List<std::string>::iterator it	= _text.begin();
+		auto res = std::make_unique<List<std::string>>();
+		List<std::string>::iterator it = _text.begin();
 
 		for (int i = 0; i < from; i++) { continue; }
 

@@ -5,7 +5,7 @@
 
 
 TEST(ListTest, TestPushBack) {
-	List<std::string>				 l;
+	List<std::string> l;
 	std::vector<std::string> expected{ "cat", "dog", "dog", "duck", "lion", "monkey" };
 	for (const auto &s : expected) { l.push_back(s); }
 	EXPECT_EQ(expected.size(), l.size());
@@ -16,7 +16,7 @@ TEST(ListTest, TestPushBack) {
 	}
 }
 TEST(ListTest, TestPop) {
-	List<std::string>				 l;
+	List<std::string> l;
 	std::vector<std::string> expected{ "cat", "dog", "dog", "duck", "lion", "monkey" };
 	for (const auto &s : expected) { l.push_back(s); }
 

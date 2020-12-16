@@ -10,7 +10,7 @@ TEST(BigIntTest, BigInt_SummSmallNumbers) {
 }
 
 TEST(BigIntTest, BigInt_SummBigNumbers_ShouldReturnNone) {
-	auto		 max = std::numeric_limits<unsigned int>::max();
+	auto max = std::numeric_limits<unsigned int>::max();
 	bigint_t t1(max);
 	bigint_t t(1);
 	bigint_t t2 = t + t1;

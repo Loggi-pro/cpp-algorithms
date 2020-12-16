@@ -7,7 +7,7 @@ struct ListNode {
 	using PListNode = typename Allocator::template SmartPointer<ListNode>;
 	PListNode next;
 	PListNode prev;
-	T					data;
+	T data;
 	ListNode() = default;
 };
 
@@ -17,7 +17,7 @@ public:
 	template<class D>
 	struct SmartPointer {
 		std::uintptr_t addr = 0;
-		D &						 operator*() const {
+		D &operator*() const {
 			return *(D *)addr;
 		}
 		// drill - down behavior."
@@ -51,17 +51,17 @@ private:
 
 	struct ListNodeBuffer {//список буферов
 		ListNodeBuffer *next_buffer;
-		PListNode				buffer;
+		PListNode buffer;
 	};
 	ListNodeBuffer *buffer_List;//указатель на первый буффер
-	void						_addBuffer(ListNodeBuffer **buffer) {
-		 enum { BUFFER_SIZE = 10 };
-		 (*buffer)							= new ListNodeBuffer();
-		 T *arr									= new T[BUFFER_SIZE];
-		 (*buffer)->buffer.addr = (std::uintptr_t)&arr[0];
-		 (*buffer)->next_buffer = nullptr;
-		 next_avail.addr				= (std::uintptr_t)&arr[0];
-		 last.addr							= (std::uintptr_t)&arr[BUFFER_SIZE - 1];
+	void _addBuffer(ListNodeBuffer **buffer) {
+		enum { BUFFER_SIZE = 10 };
+		(*buffer) = new ListNodeBuffer();
+		T *arr = new T[BUFFER_SIZE];
+		(*buffer)->buffer.addr = (std::uintptr_t)&arr[0];
+		(*buffer)->next_buffer = nullptr;
+		next_avail.addr = (std::uintptr_t)&arr[0];
+		last.addr = (std::uintptr_t)&arr[BUFFER_SIZE - 1];
 	}
 
 public:
@@ -76,7 +76,7 @@ public:
 		T2 *obj = nullptr;
 
 		if (free_List.addr != 0) {//смотрим список свободных блоков
-			obj				= new ((T2 *)free_List.addr) T2();
+			obj = new ((T2 *)free_List.addr) T2();
 			free_List = (*free_List).next;
 		} else {//берем из буфера
 			obj = new ((T2 *)next_avail.addr) T2();
@@ -122,7 +122,7 @@ private:
 		using PListNode = typename ListAllocatorRAM<ListNode>::template SmartPointer<ListNode>;
 		PListNode prev;
 		PListNode next;
-		T					data;
+		T data;
 	};
 	using Allocator = ListAllocatorRAM<ListNode>;
 	Allocator _alloc;
@@ -169,7 +169,7 @@ public:
 	List() {
 		// get node
 		// node = get_node();
-		node				 = _alloc.template getMemory<ListNode>();
+		node = _alloc.template getMemory<ListNode>();
 		(*node).next = node;
 		(*node).prev = node;
 	}
@@ -185,10 +185,10 @@ public:
 		// get node
 		PListNode tmp(_alloc.template getMemory<ListNode>());
 		_alloc.construct(_alloc.addressOf(tmp) + OFFSETOF(ListNode, data), x);
-		(*tmp).next										 = position._item;
-		(*tmp).prev										 = (*position._item).prev;
+		(*tmp).next = position._item;
+		(*tmp).prev = (*position._item).prev;
 		(*(*position._item).prev).next = tmp;
-		(*position._item).prev				 = tmp;
+		(*position._item).prev = tmp;
 		_length++;
 		return iterator(tmp);
 	}
@@ -221,7 +221,7 @@ public:
 		return iterator(node);
 	}
 
-	T &			 back() {
+	T &back() {
 		iterator tmp = end();
 		return *(--tmp);
 	}

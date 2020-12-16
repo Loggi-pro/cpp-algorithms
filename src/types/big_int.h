@@ -19,8 +19,8 @@ private:
 	class place_iterator_const : std::iterator<std::forward_iterator_tag, bigint_t::value_type> {
 	private:
 		const bigint_t &_obj;
-		bool						flag_range_out;
-		std::size_t			_index;
+		bool flag_range_out;
+		std::size_t _index;
 
 	public:
 		place_iterator_const(const bigint_t &o, std::size_t pos)
@@ -64,9 +64,9 @@ private:
 	}
 
 	void _fromString(std::string str) {
-		unsigned int sum	 = 0;
-		value_type	 carry = 0;
-		unsigned int pos	 = 1;
+		unsigned int sum = 0;
+		value_type carry = 0;
+		unsigned int pos = 1;
 
 		for (unsigned int index = 0; index < str.length(); index++) {
 			std::size_t i = str.length() - 1 - index;
@@ -78,7 +78,7 @@ private:
 				pos = 1;
 				_digits.push_back(static_cast<value_type>(sum % BASE));
 				carry = static_cast<value_type>(sum / BASE);
-				sum		= 0;
+				sum = 0;
 
 				if (carry > 0) { pos *= 10; }
 			}
@@ -109,22 +109,22 @@ public:
 
 
 	bigint_t operator+(const bigint_t &other) {
-		bigint_t				sum;
+		bigint_t sum;
 		const bigint_t *bigger = _digits.size() > other._digits.size() ? this : &other;
 		const bigint_t *lesser = bigger == &other ? this : &other;
 		sum._digits.resize(bigger->_digits.size());
 
-		auto			 c1b	 = bigger->begin_place();
-		auto			 c2b	 = lesser->begin_place();
-		auto			 c1e	 = bigger->end_place();
-		auto			 c2e	 = lesser->end_place();
+		auto c1b = bigger->begin_place();
+		auto c2b = lesser->begin_place();
+		auto c1e = bigger->end_place();
+		auto c2e = lesser->end_place();
 		value_type carry = 0;
 		for (std::size_t i = 0; i < bigger->_digits.size(); i++) {
-			value_type c1	 = c1b == c1e ? 0 : *c1b++;
-			value_type c2	 = c2b == c2e ? 0 : *c2b++;
-			auto			 val = static_cast<unsigned int>(c1 + c2 + carry);
-			auto			 a	 = static_cast<value_type>(val % BASE);
-			carry					 = static_cast<value_type>(val / BASE);
+			value_type c1 = c1b == c1e ? 0 : *c1b++;
+			value_type c2 = c2b == c2e ? 0 : *c2b++;
+			auto val = static_cast<unsigned int>(c1 + c2 + carry);
+			auto a = static_cast<value_type>(val % BASE);
+			carry = static_cast<value_type>(val / BASE);
 			sum._digits[i] = a;
 		}
 
@@ -136,7 +136,7 @@ public:
 	}
 
 	[[nodiscard]] std::optional<unsigned int> value() const {
-		unsigned int sum	= 0;
+		unsigned int sum = 0;
 		unsigned int base = 1;
 		for (unsigned int index = 0; index < _digits.size(); index++, base *= BASE) {
 			unsigned int old_sum = sum;
