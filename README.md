@@ -15,4 +15,4 @@ C++ algorithms implementations
 1. **Fibonacci function** ([*algorithms/fibonacci.h*](/src/algorithms/fibonacci.h)) - fibonacci algorithm without memoization, but no unnecessary calls within one calculation.
 ### Examples
 1. **Text editor example** ([*examples/editor.h*](/src/examples/editor.h)) - example of console text editor  based on **Linked list** implementation.
-
+2. **Hanoi tower example** ([*examples/hanoi.h*](/src/examples/hanoi.h)) - example of solving hanoi tower puzzle by recursion.
