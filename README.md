@@ -7,7 +7,7 @@
 
 C++ algorithms implementations
 
-###Types
+### Types
 1. **Linked list** ([*types/list.h*](/src/types/list.h)) - custom ram allocator implemented. (see **Text editor** example )
 2. **Big integer type** ([*types/big_int.h*](/src/types/big_int.h))  - type that can hold number more than 64bit integers. (only unsigned numbers, only sum operator implemented as example)
 ### Algorithms
@@ -16,3 +16,4 @@ C++ algorithms implementations
 ### Examples
 1. **Text editor example** ([*examples/editor.h*](/src/examples/editor.h)) - example of console text editor  based on **Linked list** implementation.
 2. **Hanoi tower example** ([*examples/hanoi.h*](/src/examples/hanoi.h)) - example of solving hanoi tower puzzle by recursion.
+3. **Value to binary example** ([*examples/value_to_binary.h*](/src/examples/value_to_binary.h)) - recursive function that convert integer value to binary as string.
