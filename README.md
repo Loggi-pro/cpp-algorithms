@@ -13,7 +13,8 @@ C++ algorithms implementations
 ### Algorithms
 1. **Insertion sort** ([*algorithms/insertion_sort.h*](/src/algorithms/insertion_sort.h)) - simple insertion sorting algorithm
 2. **Fibonacci function** ([*algorithms/fibonacci.h*](/src/algorithms/fibonacci.h)) - fibonacci algorithm without memoization, but no unnecessary calls within one calculation.
-3. **Binary search** ([*algorithms/binary_search.h*](/src/algorithms/binary_search.h)) -- binary search implementation.
+3. **Binary search** ([*algorithms/binary_search.h*](/src/algorithms/binary_search.h)) - binary search implementation.
+4. **Greatest common divisor** ([*algorithms/gcd.h*](/src/algorithms/gcd.h)) - greatest common divisor implementation.
 ### Examples
 1. **Text editor example** ([*examples/editor.h*](/src/examples/editor.h)) - example of console text editor  based on **Linked list** implementation.
 2. **Hanoi tower example** ([*examples/hanoi.h*](/src/examples/hanoi.h)) - example of solving hanoi tower puzzle by recursion.
