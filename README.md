@@ -15,6 +15,7 @@ C++ algorithms implementations
 2. **Fibonacci function** ([*algorithms/fibonacci.h*](/src/algorithms/fibonacci.h)) - fibonacci algorithm without memoization, but no unnecessary calls within one calculation.
 3. **Binary search** ([*algorithms/binary_search.h*](/src/algorithms/binary_search.h)) - binary search implementation.
 4. **Greatest common divisor** ([*algorithms/gcd.h*](/src/algorithms/gcd.h)) - greatest common divisor implementation.
+5. **Power of number**  ([*algorithms/power.h*](/src/algorithms/power.h)) - calculate power of number.
 ### Examples
 1. **Text editor example** ([*examples/editor.h*](/src/examples/editor.h)) - example of console text editor  based on **Linked list** implementation.
 2. **Hanoi tower example** ([*examples/hanoi.h*](/src/examples/hanoi.h)) - example of solving hanoi tower puzzle by recursion.
