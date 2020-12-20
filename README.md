@@ -21,3 +21,4 @@ C++ algorithms implementations
 1. **Text editor example** ([*examples/editor.h*](/src/examples/editor.h)) - example of console text editor  based on **Linked list** implementation.
 2. **Hanoi tower example** ([*examples/hanoi.h*](/src/examples/hanoi.h)) - example of solving hanoi tower puzzle by recursion.
 3. **Value to binary example** ([*examples/value_to_binary.h*](/src/examples/value_to_binary.h)) - recursive function that convert integer value to binary as string.
+3. **Coin exchange algorithm** ([*examples/coins.h*](/src/examples/coins.h)) - backtrack search algorithm implementation of coins exchange. Used static time polymorphism with variant type.
