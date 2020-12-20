@@ -16,6 +16,7 @@ C++ algorithms implementations
 3. **Binary search** ([*algorithms/binary_search.h*](/src/algorithms/binary_search.h)) - binary search implementation.
 4. **Greatest common divisor** ([*algorithms/gcd.h*](/src/algorithms/gcd.h)) - greatest common divisor implementation.
 5. **Power of number**  ([*algorithms/power.h*](/src/algorithms/power.h)) - calculate power of number.
+6. **Palindrom test**  ([*algorithms/palindrom.h*](/src/algorithms/palindrom.h)) - test string on palindrom.
 ### Examples
 1. **Text editor example** ([*examples/editor.h*](/src/examples/editor.h)) - example of console text editor  based on **Linked list** implementation.
 2. **Hanoi tower example** ([*examples/hanoi.h*](/src/examples/hanoi.h)) - example of solving hanoi tower puzzle by recursion.
