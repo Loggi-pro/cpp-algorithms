@@ -17,6 +17,7 @@ C++ algorithms implementations
 4. **Greatest common divisor** ([*algorithms/gcd.h*](/src/algorithms/gcd.h)) - greatest common divisor implementation.
 5. **Power of number**  ([*algorithms/power.h*](/src/algorithms/power.h)) - calculate power of number.
 6. **Palindrom test**  ([*algorithms/palindrom.h*](/src/algorithms/palindrom.h)) - test string on palindrom.
+7. **Quick sort**  ([*algorithms/quick_sort.h*](/src/algorithms/quick_sort.h)) - quick sort implementation.
 ### Examples
 1. **Text editor example** ([*examples/editor.h*](/src/examples/editor.h)) - example of console text editor  based on **Linked list** implementation.
 2. **Hanoi tower example** ([*examples/hanoi.h*](/src/examples/hanoi.h)) - example of solving hanoi tower puzzle by recursion.
