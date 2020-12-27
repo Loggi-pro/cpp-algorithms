@@ -19,6 +19,7 @@ C++ algorithms implementations
 6. **Palindrom test**  ([*algorithms/palindrom.h*](/src/algorithms/palindrom.h)) - test string on palindrom.
 7. **Quick sort**  ([*algorithms/quick_sort.h*](/src/algorithms/quick_sort.h)) - quick sort implementation.
 7. **Combinatorics permutations**  ([*algorithms/combinatorics.h*](/src/algorithms/combinatorics.h)) - find all permutations of string.
+7. **AVL Tree**  ([*algorithms/tree.h*](/src/algorithms/tree.h)) - AVL tree based on binary tree. Note: not all algorithms is implemented.
 ### Examples
 1. **Text editor example** ([*examples/editor.h*](/src/examples/editor.h)) - example of console text editor  based on **Linked list** implementation.
 2. **Hanoi tower example** ([*examples/hanoi.h*](/src/examples/hanoi.h)) - example of solving hanoi tower puzzle by recursion.
