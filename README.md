@@ -27,3 +27,5 @@ C++ algorithms implementations
 3. **Value to binary example** ([*examples/value_to_binary.h*](/src/examples/value_to_binary.h)) - recursive function that convert integer value to binary as string.
 3. **Coin exchange algorithm** ([*examples/coins.h*](/src/examples/coins.h)) - backtrack search algorithm implementation of coins exchange. Used static time polymorphism with variant type.
 3. **Maze solver** ([*examples/maze.h*](/src/examples/maze.h)) - backtrack search the exit from maze.  
+### Patterns
+1. **Observer pattern** ([*patterns/observer.h*](/src/patterns/observer.h)) - observer without dynamic memory allocation, using chain of responsibility (linked list of handlers).
