@@ -7,10 +7,10 @@
 TEST(TreeTest, Test1a) {
 	/*
 		20-   |      20
-		\   |    /  \
-		24  |=> 19    24
-			|          \
-			|			26
+		\     |    /  \
+		24    |=> 19    24
+					|          \
+					| 			    26
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -26,11 +26,11 @@ TEST(TreeTest, Test1a) {
 
 TEST(TreeTest, Test2a) {
 	/*
-		20-   |      20
+		20- |      20
 		\   |    /  \
 		24  |=> 19    24
-			|
-			|
+				|
+				|
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -48,8 +48,8 @@ TEST(TreeTest, Test5a) {
 		20-   |       20-   |      24
 			\   |         \   |    /  \
 			24  |=>        24+|=> 20    23
-				|          /  |
-				|        23  |
+					|          /  |
+					|        23   |
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -64,11 +64,11 @@ TEST(TreeTest, Test5a) {
 
 TEST(TreeTest, Test4a) {
 	/*
-		20-   |       20-    |      24
+		20- |       20-    |      24
 		\   |         \    |    /  \
 		24  |=>        24- |=> 20    26
-			|            \ |
-			|            26|
+				|            \ |
+				|            26|
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -87,8 +87,8 @@ TEST(TreeTest, Test3a) {
 		20+  |       20++ |      4
 	/      |     /      |    /  \
 	4      |=>   4+     |=> 3    20
-			 |   /        |
-			 |  3         |
+				 |   /        |
+				 |  3         |
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -106,8 +106,8 @@ TEST(TreeTest, Test6a) {
 		20+  |       20++ |        20++ |     15
 	/      |     /      |      /      |   /  \
 	4      |=>   4-     |=>   15+     |=> 4    20
-				 |     \      |   /		  |
-				 |      15    |  4		  |
+				 |     \      |   /		      |
+				 |      15    |  4		      |
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -123,13 +123,13 @@ TEST(TreeTest, Test6a) {
 
 TEST(TreeTest, Test6b) {
 	/*
-		20+   |       20++  |         20++  |       9
+		20+     |       20++  |         20++  |       9
 		 /  \   |      /  \   |        /  \   |      / \
 		4    26 |=>   4-   26 |=>     9+   26 |=>   4+  20
 	 / \      |    / \      |      / \      |    /   /  \
 	3   9     |   3   9-    |     4+  15    |   3  15    26
-				|		   \    |   /			|
-				|			15  |  3			|
+						|		     \    |   /			      |
+						|			    15  |  3		      	|
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -148,15 +148,15 @@ TEST(TreeTest, Test6b) {
 
 TEST(TreeTest, Test6c) {
 	/*
-			__20+__       |         _20++_       |           __20++_       |         ___9___
-		 /       \      |        /      \      |          /       \      |        /       \
-		4         26    |=>     4-       26    |=>       9+        26    |=>     4+      __20__
+			__20+__         |         _20++_       |           __20++_       |         ___9___
+		 /       \        |        /      \      |          /       \      |        /       \
+		4         26      |=>     4-       26    |=>       9+        26    |=>     4+      __20__
 		 / \       /  \   |      / \      /  \   |        / \       /  \   |      / \     /      \
 		3+  9    21    30 |     3+  9-  21    30 |       4+  11-  21    30 |     3+  7  11-       26
 	 /   / \            |    /   / \           |      / \   \            |    /         \      /  \
 	2   7   11          |   2   7   11-        |     3+  7   15          |   2           15  21    30
-						|			 \         |   /					 |
-						|			  15       |  2						 |
+											|			 \               |   /					           |
+											|			  15             |  2						           |
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -183,8 +183,8 @@ TEST(TreeTest, Test6a2) {
 		20+ |     20++ |       20++ |     8
 	 /    |    /     |      /     |    / \
 	4     |=> 4-     |=>   8+     |=> 4   20
-			|	  \      |   /		  |
-			|	   8     |  4		  |
+				|	  \      |   /		    |
+				|	   8     |  4		      |
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -199,13 +199,13 @@ TEST(TreeTest, Test6a2) {
 
 TEST(TreeTest, Test6b2) {
 	/*
-		20+          20++           20++         9
+		20+           20++           20++         9
 		 /  \         /  \           /  \         / \
 		4    26 =>   4-   26 =>     9++  26 =>   4   20-
 	 / \          / \            /            / \    \
 	3   9        3   9+         4            3   8    26
-					/          / \
-					 8          3   8
+							/              / \
+						 8              3   8
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -223,15 +223,15 @@ TEST(TreeTest, Test6b2) {
 
 TEST(TreeTest, Test6c2) {
 	/*
-			__20+__                _20++_                  __20++_                ___9___
-		 /       \              /      \                /       \              /       \
-		4         26           4-       26             9+        26           4        _20-
+			__20+__                  _20++_                  __20++_                ___9___
+		 /       \                /      \                /       \              /       \
+		4         26             4-       26             9+        26           4        _20-
 		 / \       /  \         / \      /  \           / \       /  \         / \      /    \
 		3+  9    21    30 =>   3+  9+  21    30 =>     4   11   21    30 =>   3+  7-  11      26
 	 /   / \                /   / \                 / \                    /     \         /  \
 	2   7   11             2   7-  11              3+  7-                 2       8      21    30
-								\                 /     \
-								 8               2       8
+						\                 /     \
+						 8               2       8
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(20);
@@ -305,11 +305,11 @@ TEST(TreeTest, TestDelete_Base_3R) {
 	ancestor->left.balanceFactor='='  Right rotate
 	*/
 	/*
-		 5L                  2
-		/  x                / \
-	 2=   6   =>R        1   5
-	 / \					/  \
-	1   4				   4
+			5L                  2
+		 /  x                / \
+		2=   6   =>R        1   5
+	 / \				          	/  \
+	1   4			             	   4
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(5);
@@ -356,7 +356,7 @@ TEST(TreeTest, DISABLED_TestDelete_Base_5R) {
 	/*
 		5L                 5L       4
 	 / x                / x      / \
-	2R   6   == L ==> 4   6 =>R 2   5
+	2R   6   == L ==> 4    6 =>R 2   5
 	 \				  /
 		4				  2
 	*/
@@ -413,9 +413,9 @@ TEST(TreeTest, TestDelet_Base_2L) {
 	/*
 			6=		  	   6=
 			/ \		  	  / \
-			 4L  8	     4L  8
+			 4L  8	   4L  8
 			/       ==>   /
-		2L  		  2L
+		2L  		       2L
 		x
 		 1
 	*/
@@ -441,8 +441,8 @@ TEST(TreeTest, TestDelete_Case_3L) {
 		2R          2            4
 	 x \           \          / \
 	1   4=    =>    4    =>  2   5
-		 / \        / \        \
-		3   5      3   5        3
+		 / \         / \        \
+		3   5       3   5        3
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(2);
@@ -466,9 +466,9 @@ TEST(TreeTest, TestDelete_Base_4L) {
 	/*
 		4R                  5
 	 x \                 / \
-	2   5R   == 1L ==>   4   6
-		 \
-			6
+	2   5R   == 1L ==>  4   6
+			 \
+				6
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(4);
@@ -516,7 +516,7 @@ TEST(TreeTest, TestDelete_ComplexOpA) {
 		 x   / \           / \   \
 		2   8   12         4   8   14
 				 \
-				14
+				 14
 	*/
 	AVLTree<int, std::greater<int>> tree;
 	tree.insert(6);
@@ -662,7 +662,7 @@ TEST(TreeTest, DISABLED_TestDelete_CaseC) {
 		 /       \            /       \               /       \                 /         \
 		2         8          2         8             3         8              _5_         10
 	 x \       / \          \       / \           / \       / \            /   \        / \
-	1   3R     7  10     =>   3     7   10     => 2   4     7  10     =>   3     7      9   12
+	1   3R     7  10     => 3     7   10     =>  2   4     7  10     =>   3     7      9   12
 		 \   /   / \          \   /   / \                 /   / \        / \   /            \
 			4 6   9  12          4 6   9  12               6   9  12      2   4 6              13
 					 \                    \                       \
