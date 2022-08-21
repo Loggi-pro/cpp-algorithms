@@ -17,3 +17,8 @@ TEST(FibonacciTest, TestSequence) {
 		EXPECT_EQ(expected[n], f);
 	}
 }
+
+TEST(FibonacciTest, TestMatrix) {
+	unsigned int a = fibbonacci_matrix<unsigned int>(25u);
+	EXPECT_EQ(75025u, a);
+}

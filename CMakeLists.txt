@@ -6,7 +6,7 @@ run_conan()
 
 # settings
 add_library(project_options INTERFACE)
-target_compile_features(project_options INTERFACE cxx_std_17)
+target_compile_features(project_options INTERFACE cxx_std_20)
 add_library(project_warnings INTERFACE)
 # standard compiler warnings
 include(cmake/CompilerWarnings.cmake)

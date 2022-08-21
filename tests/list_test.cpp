@@ -1,16 +1,15 @@
-#include "types/list.h"
-#include "utils.h"
 #include <gtest/gtest.h>
-#include <string>
 
+#include "types/list.h"
+#include <string>
 
 TEST(ListTest, TestPushBack) {
 	List<std::string> l;
 	std::vector<std::string> expected{ "cat", "dog", "dog", "duck", "lion", "monkey" };
-	for (const auto &s : expected) { l.push_back(s); }
+	for (const auto& s : expected) { l.push_back(s); }
 	EXPECT_EQ(expected.size(), l.size());
 	unsigned int i = 0;
-	for (auto &s : l) {
+	for (auto& s : l) {
 		EXPECT_EQ(expected[i], s);
 		i++;
 	}
@@ -18,7 +17,7 @@ TEST(ListTest, TestPushBack) {
 TEST(ListTest, TestPop) {
 	List<std::string> l;
 	std::vector<std::string> expected{ "cat", "dog", "dog", "duck", "lion", "monkey" };
-	for (const auto &s : expected) { l.push_back(s); }
+	for (const auto& s : expected) { l.push_back(s); }
 
 	EXPECT_EQ(expected.size(), l.size());
 	for (std::size_t i = 0; i < expected.size(); ++i) {
