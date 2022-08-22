@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(cpp_algorithms)
 include(cmake/Conan.cmake)
-SET(CONANFILE ${CMAKE_SOURCE_DIR}/conanfile.txt)
 run_conan()
 
 # settings
