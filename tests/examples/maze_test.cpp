@@ -7,7 +7,7 @@ TEST(MazeTest, SimpleSolveMaze) {
 	BackTrack b(&app);
 	Position start = app.generateInitialState();
 	EXPECT_EQ(true, b.tryToSolve(start));
-	std::vector<std::pair<short, short>> v(app.positions.begin(), app.positions.end());
+	std::vector<std::pair<int, int>> v(app.positions.begin(), app.positions.end());
 	EXPECT_EQ(0, v[0].first);
 	EXPECT_EQ(0, v[0].second);
 	EXPECT_EQ(1, v[1].first);

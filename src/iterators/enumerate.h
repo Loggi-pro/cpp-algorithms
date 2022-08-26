@@ -30,7 +30,13 @@ struct has_size {
 namespace details {
 
 template<typename T>
-struct range_iter_base : std::iterator<std::input_iterator_tag, T> {
+struct range_iter_base {
+	using iterator_category = std::input_iterator_tag;
+	using value_type = T;
+	using difference_type = T;
+	using pointer = T*;
+	using reference = T&;
+
 	range_iter_base(T _current) : current(_current) {}
 
 	T operator*() const {

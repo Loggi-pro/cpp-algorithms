@@ -16,14 +16,20 @@ private:
 	std::vector<value_type> _digits;
 
 	// TODO make iterate over every digit, not place(5 digits)
-	class place_iterator_const : std::iterator<std::forward_iterator_tag, bigint_t::value_type> {
+	class place_iterator_const {
 	private:
-		const bigint_t &_obj;
+		const bigint_t& _obj;
 		bool flag_range_out;
 		std::size_t _index;
 
 	public:
-		place_iterator_const(const bigint_t &o, std::size_t pos)
+		using iterator_category = std::forward_iterator_tag;
+		using value_type = bigint_t::value_type;
+		using difference_type = bigint_t::value_type;
+		using pointer = bigint_t::value_type*;
+		using reference = bigint_t::value_type&;
+
+		place_iterator_const(const bigint_t& o, std::size_t pos)
 			: _obj(o), flag_range_out(pos >= o._digits.size()), _index(flag_range_out ? 0 : o._digits.size() - 1 - pos) {
 			uint32_t a = 0;
 			a++;

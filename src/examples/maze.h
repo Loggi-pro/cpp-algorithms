@@ -126,7 +126,7 @@ class MazeApplication : public Application {
 	enum { WALL = 0, CORRIDOR = 1, PATH = 9, TRIED = 2 };
 	inline static const int ROWS = 7;
 	inline static const int COLUMNS = 13;
-	inline static short grid[ROWS][COLUMNS] = {
+	inline static int grid[ROWS][COLUMNS] = {
 		{ 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1 }, { 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1 },
 		{ 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 }, { 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1 },
 		{ 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -134,7 +134,7 @@ class MazeApplication : public Application {
 	};
 
 public:
-	std::set<std::pair<short, short>> positions;
+	std::set<std::pair<int, int>> positions;
 	Position generateInitialState() {
 		start.setPosition(0, 0);
 		finish.setPosition(6, 12);
@@ -143,12 +143,12 @@ public:
 	}
 	// Postcondition:	true->pos on the way to target
 	//				false->not on the way
-	bool valid(const Position &pos) const {
+	bool valid(const Position& pos) const {
 		return (pos.getRow() >= 0 && pos.getRow() < ROWS && pos.getColumn() >= 0 && pos.getColumn() < COLUMNS
 						&& grid[pos.getRow()][pos.getColumn()] == CORRIDOR);
 	}
 	// pos must be legal
-	void record(const Position &pos) {
+	void record(const Position& pos) {
 		grid[pos.getRow()][pos.getColumn()] = PATH;
 		positions.insert(std::make_pair(pos.getColumn(), pos.getRow()));
 	}

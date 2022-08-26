@@ -31,3 +31,4 @@ C++ algorithms implementations
 1. **Observer pattern** ([*patterns/observer.h*](/src/patterns/observer.h)) - observer without dynamic memory allocation, using chain of responsibility (linked list of handlers).
 ### Multithread
 1. **Future utils** ([*multithread/future_utils.h*](/src/multithread/future_utils.h)) - some functions to work with futures.
+1. **Job utils** ([*multithread/future_utils.h*](/src/multithread/future_utils.h)) - some functions to work with futures.

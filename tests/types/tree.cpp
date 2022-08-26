@@ -1,4 +1,4 @@
-#include "algorithms/tree.h"
+#include "types/tree.h"
 #include <algorithm>
 #include <gtest/gtest.h>
 // ALL PICTURES IS MIRRORED!!

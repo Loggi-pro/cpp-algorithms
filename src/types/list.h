@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 #include <cstdint>
 
 #define OFFSETOF(s, m) (std::size_t) & (((s *)0)->m)
