@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 
+
 # This file comes from: https://github.com/conan-io/cmake-conan. Please refer
 # to this repository for issues and documentation.
 
@@ -73,12 +74,16 @@ macro(_conan_detect_build_type)
     string(TOUPPER ${_CONAN_SETTING_BUILD_TYPE} _CONAN_SETTING_BUILD_TYPE_UPPER)
     if (_CONAN_SETTING_BUILD_TYPE_UPPER STREQUAL "DEBUG")
         set(_CONAN_SETTING_BUILD_TYPE "Debug")
+
     elseif (_CONAN_SETTING_BUILD_TYPE_UPPER STREQUAL "RELEASE")
         set(_CONAN_SETTING_BUILD_TYPE "Release")
+
     elseif (_CONAN_SETTING_BUILD_TYPE_UPPER STREQUAL "RELWITHDEBINFO")
         set(_CONAN_SETTING_BUILD_TYPE "RelWithDebInfo")
+
     elseif (_CONAN_SETTING_BUILD_TYPE_UPPER STREQUAL "MINSIZEREL")
         set(_CONAN_SETTING_BUILD_TYPE "MinSizeRel")
+
     endif ()
 endmacro()
 
@@ -114,6 +119,7 @@ macro(_conan_check_language)
         set(USING_CXX 0)
     else ()
         message(FATAL_ERROR "Conan: Neither C or C++ was detected as a language for the project. Unabled to detect compiler version.")
+
     endif ()
 endmacro()
 

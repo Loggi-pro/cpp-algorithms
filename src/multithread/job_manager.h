@@ -7,6 +7,7 @@
 #include <thread>
 #include <vector>
 
+#include "event.h"
 #include <iostream>
 #include <optional>
 #include <string>
@@ -31,6 +32,9 @@ protected:
 	std::atomic<Status> status = Status::Queued;
 	std::atomic_bool cancelled_after_start;
 	std::string debugName{};
+#ifndef IS_CPP20_SUPPORT
+	Event completeEvent;
+#endif
 
 	void done() {
 		for (auto& j : _thenJobs) { j->_countToWait--; }
@@ -61,6 +65,9 @@ public:
 		_thenJobs.push_back(std::move(j));
 	}
 
+	[[nodiscard]] bool isDone() const {
+		return status == Status::Finished || status == Status::Cancelled;
+	}
 
 	void cancel() {
 		if (status == Status::InProcess || status == Status::Queued) {
@@ -74,12 +81,14 @@ public:
 			_thenJobs.clear();
 		}
 	}
-#ifdef IS_CPP20_SUPPORT
 	void join() {
+#ifdef IS_CPP20_SUPPORT
 		status.wait(Status::InProcess);// c++20 feature;
-		assert(status == Status::Finished || status == Status::Cancelled);
-	}
+#else
+		completeEvent.wait();
 #endif
+		assert(isDone());
+	}
 	std::string& getName() {
 		return debugName;
 	}
@@ -112,6 +121,8 @@ public:
 		}
 #ifdef IS_CPP20_SUPPORT
 		status.notify();
+#else
+		completeEvent.set();
 #endif
 	}
 };
@@ -357,7 +368,6 @@ public:
 		return TaskHandle{ std::move(f) };
 	}
 
-
 	virtual ~JobManager() {
 		terminate();
 		waitTillCompletion();
@@ -414,13 +424,17 @@ public:
 	UiJobManager() : JobManager(createHandler(), 1) {}
 
 	void loop() {
-		assert(_handler->isAttachedToThread());
+		// assert(_handler->isAttachedToThread());
 		// no block thread => run only once
 		_handler->doWork();
 	}
 
 	void waitTillCompletion() override final {
-		while (_countInWork > 0) { loop(); }
+		while (!empty()) { loop(); }
+	}
+
+	bool empty() const {
+		return _countInWork == 0;
 	}
 };
 
