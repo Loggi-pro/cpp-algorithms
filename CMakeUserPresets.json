@@ -1,0 +1,11 @@
+{
+    "version": 4,
+    "vendor": {
+        "conan": {}
+    },
+    "include": [
+        "build/Debug/build/generators/CMakePresets.json",
+        "build/cmake-build-debug-visual-studio/conan/build/Debug/generators/CMakePresets.json",
+        "build/cmake-build-release-visual-studio/conan/build/Release/generators/CMakePresets.json"
+    ]
+}

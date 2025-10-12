@@ -1,8 +1,12 @@
 [requires]
-gtest/1.10.0
+gtest/1.17.0
 
 [options]
-gtest:build_gmock=False
+gtest/*:build_gmock=False
 
 [generators]
-cmake
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout

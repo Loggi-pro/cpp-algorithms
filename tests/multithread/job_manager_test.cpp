@@ -62,10 +62,10 @@ struct JobWidget : public StatusWidget {
 														if (token.isCancelled()) { return; }
 
 														ui_manager.post(
-															[this, status = std::move(status)](const IJob& token) mutable {
+															[this, status](const IJob& t) mutable {
 																if (doBeforeSecondCancel) { doBeforeSecondCancel(); }
-																if (token.isCancelled() || progress->isCancelled) { return; }
-																events.push_back(TestEvent::RUN_UI_CALLBACK);
+				if (t.isCancelled() || progress->isCancelled) { return; }
+				events.push_back(TestEvent::RUN_UI_CALLBACK);
 																progress->stop();
 																// UPDATE_UI HERE
 																(void)status;
@@ -87,7 +87,8 @@ TEST(JobManagerTest, ComplexWidgetTest_ShouldBeOk) {
 	widget.update();
 	task_manager.waitTillCompletion();
 	ui_manager.loop();
-	EXPECT_ARR_EQ(SINGLE_ARG({ TestEvent::RUN_OTHER_THREAD_ACTION, TestEvent::RUN_UI_CALLBACK }), events);
+	test_arrays({ TestEvent::RUN_OTHER_THREAD_ACTION, TestEvent::RUN_UI_CALLBACK }, events, CL);
+	// EXPECT_ARR_EQ(SINGLE_ARG({ TestEvent::RUN_OTHER_THREAD_ACTION, TestEvent::RUN_UI_CALLBACK }), events);
 }
 
 TEST(JobManagerTest, ComplexWidgetTest_OnCancelOnExternalTask) {

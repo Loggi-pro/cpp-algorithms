@@ -1,6 +1,6 @@
 #pragma once
+#include <cstdint>
 #include <gtest/gtest.h>
-#include <stdint.h>
 #include <vector>
 
 struct Cl {
@@ -13,14 +13,17 @@ struct Cl {
 		__FILE__, __LINE__ \
 	}
 
-template<typename T>
-concept Formatable = requires(T x) {
-	std::formatter<T>::format;// required class template specialization
+
+template<class T>
+concept Formatable = requires(const T& v, std::format_context& ctx) {
+	typename std::formatter<T, char>;
+	{ std::formatter<T, char>{}.format(v, ctx) } -> std::same_as<std::format_context::iterator>;
 };
 
+
 template<Formatable T>// type must support format
-void test_arrays(const std::vector<T>& expected, const std::vector<T>& actual, Cl cl = CL) {
-	const std::size_t MAX_PRINT_LINE = 3;
+void test_arrays(const std::vector<T>& expected, const std::vector<T>& actual, const Cl cl = CL) {
+	constexpr std::size_t MAX_PRINT_LINE = 3;
 	std::size_t size_of_expected = std::size(expected);
 	std::size_t size_of_actual = std::size(actual);
 	auto [minSize, maxSize] = std::minmax(size_of_expected, size_of_actual);
@@ -63,7 +66,7 @@ void test_arrays(const std::vector<T>& expected, const std::vector<T>& actual, C
 	if (currentPrintCount > MAX_PRINT_LINE) {
 		message += std::format("\n   ... and {} more", currentPrintCount - MAX_PRINT_LINE);
 	}
-	if (wasFailed) { GTEST_FAIL_AT(cl.file, cl.line) << message; }
+	if (wasFailed) { GTEST_FAIL_AT(cl.file, static_cast<int>(cl.line)) << message; }
 }
 
 #define EXPECT_ARR_EQ(expected, actual) test_arrays(expected, actual, CL)

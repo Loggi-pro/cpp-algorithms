@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(cpp_algorithms)
 include(cmake/Conan.cmake)
-run_conan()
+run_conan(${CMAKE_CURRENT_LIST_DIR}/conanfile.txt)
 
 # settings
 add_library(project_options INTERFACE)
